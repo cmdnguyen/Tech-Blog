@@ -1,5 +1,11 @@
 <h1>The Tech Blog</h1>
+
 {{#each posts as |post|}}
+<h1>{{post.name}}</h1>
+<h1>{{post.desc}}</h1>
+
+{{/each}}
+{{!-- {{#each posts as |post|}}
 <div>
     <div>
         <h2>{{post.title}}</h2>
@@ -7,4 +13,4 @@
     </div>
     <p>{{post.description}}</p>    
 </div>
-{{/each}}
+{{/each}} --}}
