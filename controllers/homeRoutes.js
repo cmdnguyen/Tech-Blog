@@ -33,10 +33,27 @@ router.get("/dashboard", async(req,res)=>{
         logged_in: req.session.logged_in
 })
 })
-// router.get("/", async(req,res)=>{
-
-//     res.render()
-// })
+router.get("/logout", async(req,res)=>{
+    try {
+        if (req.session.logged_in) {
+          req.session.destroy((err) => {
+            if (err) {
+              console.error('Error destroying session:', err);
+              res.status(500).json({ message: 'Internal server error' });
+            } else {
+              // Redirect to a different page after logout
+              res.redirect('/login'); // Change '/login' to the desired redirect URL
+            }
+          });
+        } else {
+          res.status(404).json({ message: 'Session not found' });
+        }
+      } catch (err) {
+        console.error('Error during logout:', err);
+        res.status(500).json({ message: 'Internal server error' });
+      }
+    res.render("logout")
+})
 // router.get("/", async(req,res)=>{
 
 //     res.render()

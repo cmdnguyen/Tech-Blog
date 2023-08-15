@@ -26,8 +26,11 @@ const handleLogin = async (event) => {
   });
 
   console.log(response);
+
 if(response.ok){
     document.location.replace("/dashboard")
+} else {
+  alert('Failed to log in');
 }
 
   const data = await response.json();
