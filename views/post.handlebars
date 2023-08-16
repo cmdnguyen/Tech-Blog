@@ -1,10 +1,20 @@
 <h2>Post</h2>
-<p>{{post.title}}
-{{post.contents}}
+<p>{{post.title}}</p>
+<p>{{post.contents}}</p>
+<p>{{post.date_created}}</p>
+<p>{{post.user.username}}</p>
+
+{{#each post.comment}}
+<p>{{comment}}</p>
+{{/each}}
+<h3>Comment</h3>
+<textarea></textarea>
+<button type="submit">Comment</button>
+
 
 {{#if canEdit}}
 <textarea value="{{post.title}}"></textarea>
 <textarea value="{{post.contents}}"></textarea>
-<input type="submit">
+<button type="submit">Edit Post</button>
 
 {{/if}}
