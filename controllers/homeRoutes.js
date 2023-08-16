@@ -1,22 +1,38 @@
 //localhost:3001/
 const router = require('express').Router();
+const { User, Post} = require("../models")
 const withAuth = require('../utils/auth');
 
 router.get("/", async(req,res) =>{
     //read your database
-
-    const posts = [{
-        name: "Hi",
-        desc: "Lol"
-    }, {
-        name: "bie",
-        desc: "Lo3423l"
-    }  ]//get plain true
-
-    res.render("homepage", {
+    try {
+      const postData = await Post.findAll({
+        include: [
+          {
+            model: User
+          }
+        ]
+      })
+      const posts = postData.map((post) =>
+      post.get({plain:true}))
+      res.render("homepage", {
         logged_in: req.session.logged_in,
         posts
     })
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err)
+    }
+
+    // const posts = [{
+    //     name: "Hi",
+    //     desc: "Lol"
+    // }, {
+    //     name: "bie",
+    //     desc: "Lo3423l"
+    // }  ]//get plain true
+
+
 })
 
 router.get("/login", async(req,res)=>{
@@ -52,10 +68,28 @@ router.get('/logout', async (req, res) => {
   }
     res.render("logout")
 })
-// router.get("/", async(req,res)=>{
 
-//     res.render()
-// })
+router.get("/posts/:id", async(req,res)=>{
+  try {
+    const postData = await Post. findByPk(req.params.id, {
+      include: [
+        {
+          model: User
+        }
+      ]
+    })
+    const post = postData.get({plain:true})
+    var canEdit;
+    if (post.user_id === req.session.user_id){
+      canEdit=true
+    }
+    res.render('post', {post, canEdit})
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+
+})
 
 //     res.render()
 // })

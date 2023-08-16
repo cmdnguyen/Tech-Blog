@@ -1,0 +1,10 @@
+<h2>Post</h2>
+<p>{{post.title}}
+{{post.contents}}
+
+{{#if canEdit}}
+<textarea value="{{post.title}}"></textarea>
+<textarea value="{{post.contents}}"></textarea>
+<input type="submit">
+
+{{/if}}
