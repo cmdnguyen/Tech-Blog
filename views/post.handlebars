@@ -1,8 +1,13 @@
 <h2>Post</h2>
-<p>{{post.title}}</p>
-<p>{{post.contents}}</p>
-<p>{{post.date_created}}</p>
-<p>{{post.user.username}}</p>
+<div class="card border-secondary" style="max-width: 75rem;">
+  <div class="card-header">
+    <a href="/posts/{{post.id}}"><h3>{{post.title}}</h3></a>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{post.contents}}</p>
+    <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.date_created}}</div>
+  </div>
+</div>
 
 {{#each post.comment}}
 <p>{{comment}}</p>
@@ -13,8 +18,15 @@
 
 
 {{#if canEdit}}
-<textarea value="{{post.title}}"></textarea>
-<textarea value="{{post.contents}}"></textarea>
-<button type="submit">Edit Post</button>
-
+<div id="post-form" style="max-width: 75rem;">
+<div class="mb-3" >
+  <label for="post-title" class="form-label">Post Title</label>
+  <input type="email" class="form-control" id="post-title" value="{{post.title}}">
+</div>
+<div class="mb-3">
+  <label for="post-contents" class="form-label">Post Content</label>
+  <textarea class="form-control" id="post-contents" rows="3" value="{{post.contents}}"></textarea>
+  <button type="submit">Edit Post</button>
+</div>
+</div>
 {{/if}}

@@ -1,9 +1,14 @@
 <h1>Dashboard Page</h1>
 
-    <form id="post-form">
-        <label for="post">New Post</label>
-        <input id="post-title" required>
-        <textarea id="post-content"> </textarea>
-        <button type="submit">Post</button>
-    </form>
+<div id="post-form" style="max-width: 75rem;">
+<div class="mb-3" >
+  <label for="post-title" class="form-label">Post Title</label>
+  <input type="email" class="form-control" id="post-title" value="{{post.title}}">
+</div>
+<div class="mb-3">
+  <label for="post-contents" class="form-label">Post Content</label>
+  <textarea class="form-control" id="post-contents" rows="3" value="{{post.contents}}"></textarea>
+  <button type="submit">Edit Post</button>
+</div>
+</div>
 <script src="./js/add-post.js"></script>
