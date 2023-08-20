@@ -31,5 +31,5 @@ const createNewPost = async (event) => {
     }
 }
 
-document.getElementById("post-form").addEventListener("submit", createNewPost)
+document.getElementById("post-submit").addEventListener("click", createNewPost)
 console.log("Event listener triggered");

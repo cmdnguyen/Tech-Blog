@@ -14,8 +14,15 @@
 {{/each}}
 <h3>Comment</h3>
 <textarea></textarea>
-<button type="submit">Comment</button>
+<button type="submit" id="comment-submit">Comment</button>
 
+
+<div id="comment-form" style="max-width: 75rem;">
+  <label for="comment" class="form-label">Post Content</label>
+  <textarea class="form-control" id="comment" rows="3"></textarea>
+  <button type="submit" id="comment-submit">Post</button>
+</div>
+</div>
 
 {{#if canEdit}}
 <div id="post-form" style="max-width: 75rem;">
@@ -26,9 +33,10 @@
 <div class="mb-3">
   <label for="post-contents" class="form-label">Post Content</label>
   <textarea class="form-control" id="post-contents" rows="3" value="{{post.contents}}"></textarea>
-  <button type="submit">Edit Post</button>
+  <button type="submit" id="post-submit">Edit Post</button>
 </div>
 </div>
 {{/if}}
 
+<script src="/js/add-comment.js"></script>
 <script src="/js/add-post.js"></script>
