@@ -3,12 +3,13 @@
 <div id="post-form" style="max-width: 75rem;">
 <div class="mb-3" >
   <label for="post-title" class="form-label">Post Title</label>
-  <input type="email" class="form-control" id="post-title" value="{{post.title}}">
+  <input type="email" class="form-control" id="post-title" required>
 </div>
 <div class="mb-3">
   <label for="post-contents" class="form-label">Post Content</label>
-  <textarea class="form-control" id="post-contents" rows="3" value="{{post.contents}}"></textarea>
-  <button type="submit">Edit Post</button>
+  <textarea class="form-control" id="post-contents" rows="3"></textarea>
+  <button type="submit">Post</button>
 </div>
 </div>
+
 <script src="./js/add-post.js"></script>

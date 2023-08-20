@@ -32,6 +32,9 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
+      console.log(req.body.password)
+      console.log(userData)
+      console.log('password does not match')
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -63,10 +66,21 @@ router.post('/logout', (req, res) => {
     } else {
       res.status(404).json({ message: 'Session not found' });
     }
-  } catch (err) {
+} catch (err) {
     console.error('Error during logout:', err);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id)
+    return res.json(userData)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+});
+  
 
 module.exports = router;

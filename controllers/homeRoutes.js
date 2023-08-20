@@ -78,8 +78,7 @@ router.get('/posts/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        {model: User},
-        {model: Comment}
+        {model: User, Comment},
       ],
     });
     // 
@@ -94,5 +93,7 @@ router.get('/posts/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = router;

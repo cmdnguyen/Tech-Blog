@@ -5,11 +5,11 @@
   </div>
   <div class="card-body">
     <p class="card-text">{{post.contents}}</p>
-    <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.date_created}}</div>
+    <div class="footer text-body-secondary">Posted by {{post.user.id}} on {{post.date_created}}</div>
   </div>
 </div>
 
-{{#each post.comment}}
+{{#each comment}}
 <p>{{comment}}</p>
 {{/each}}
 <h3>Comment</h3>
@@ -30,3 +30,5 @@
 </div>
 </div>
 {{/if}}
+
+<script src="/js/add-post.js"></script>
