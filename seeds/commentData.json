@@ -1,20 +1,20 @@
 [
   {
     "comment": "Let's go",
-    "post_id": 1,
     "createdAt": "08/15/23",
-    "user_id": 2
+    "user_id": 2,
+    "post_id": 1
   },
   {
     "comment": "Looking forward to it",
-    "post_id": 3,
     "createdAt": "08/15/23",
-    "user_id": 1
+    "user_id": 1,
+    "post_id": 3
   },
   {
     "comment": "Sweet",
-    "post_id": 2,
     "createdAt": "08/15/23",
-    "user_id": 3
+    "user_id": 3,
+    "post_id": 2
   }
 ]

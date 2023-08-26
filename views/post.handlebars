@@ -1,3 +1,4 @@
+{{log post}}
 <h2>Post</h2>
 <div class="card border-secondary" style="max-width: 75rem;">
   <div class="card-header">
@@ -11,8 +12,10 @@
 
 
 <h3>Comment</h3>
-{{#each comments as |comment| }}
-<p>{{comment.comment}}{{comment.User.username}}</p>
+{{#each post.comments as |comment| }}
+{{log comment}}
+<p>{{comment.comment}}</p>
+<p>User: {{comment.userId}}</p>
 {{/each}}
 
 <div id="comment-form" style="max-width: 75rem;">
