@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 
 //homepage
 router.get('/', async (req, res) => {
+  console.log(req.session.user_id);
   //finds the posts in the database
   try {
     const postData = await Post.findAll({
@@ -39,15 +40,30 @@ router.get('/login', async (req, res) => {
 
 // Dashboard page, requires users to be logged in
 router.get('/dashboard', withAuth, async (req, res) => {
+  
   // If not logged in, redirect to login page
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
   }
+  try {
+    const postData = await Post.findAll({
+      where:{user_id:req.session.id},
+      include: [{model: User}],
+    });
+    //Gets the posts and renders it in the homepage
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log("User ID:", req.session.id);
+    console.log("Posts:", posts);
   // If logged in, rendered Dashboard
   res.render('dashboard', {
     logged_in: req.session.logged_in,
+    posts,
   });
+} catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
 });
 
 // Logout page
@@ -78,16 +94,17 @@ router.get('/posts/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        {model: User, Comment},
+        {model: User},
+        {model: Comment}
       ],
     });
-    // 
-    const post = postData.get({ plain: true });
+    const post = postData.get({plain:true})
+    
     var canEdit;
     if (post.user_id === req.session.user_id) {
       canEdit = true;
     }
-    res.render('post', { post, canEdit, logged_in: req.session.logged_in});
+    res.render('post', { post, canEdit, logged_in: req.session.logged_in, comments: post.Comment});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

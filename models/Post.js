@@ -18,8 +18,8 @@ Post.init(
     contents: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATEONLY,
+    createdAt: {
+      type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },

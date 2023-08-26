@@ -1,5 +1,3 @@
-console.log("adding post")
-
 const createNewPost = async (event) => {
     event.preventDefault()
 
@@ -32,4 +30,3 @@ const createNewPost = async (event) => {
 }
 
 document.getElementById("post-submit").addEventListener("click", createNewPost)
-console.log("Event listener triggered");

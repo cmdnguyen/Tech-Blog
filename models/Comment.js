@@ -22,8 +22,8 @@ Comment.init(
                 key:'id'
             }
         },
-        data_created: {
-            type: DataTypes.DATEONLY,
+        createdAt: {
+            type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW
         },

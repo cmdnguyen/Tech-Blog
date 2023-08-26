@@ -1,11 +1,9 @@
-console.log("adding comment")
-
 const createNewPost = async (event) => {
     event.preventDefault()
 
 
     const comment = document.querySelector('#comment').value;
-
+    console.log(comment)
     if (!comment){
         alert('Must have comment');
         return;
@@ -24,9 +22,8 @@ const createNewPost = async (event) => {
     if (response.ok){
         document.location.reload()
     } else{
-        console.log("Error ")
+        console.log("Error")
     }
 }
 
 document.getElementById("comment-submit").addEventListener("click", createNewPost)
-console.log("Event listener triggered");

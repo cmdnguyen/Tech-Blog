@@ -3,12 +3,13 @@ const {Comment} = require ('../../models')
 
 router.post('/', async (req, res) =>{
     try {
-       console.log("adding a comment")
+      console.log("ADDING A COMMENT")
        console.log(req.body)
        const newComment = await Comment.create({
         ...req.body,
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
        })
+       console.log(newComment)
        res.status(200).json(newComment) 
     } catch (err) {
         res.status(400).json(err)
@@ -35,4 +36,14 @@ router.delete('/:id', async (req, res) => {
     }
   });
   
+  router.get("/", async (req, res) => {
+    try {
+      const commentData = await Comment.findAll()
+      return res.json(commentData)
+    } catch (err) {
+      console.log(err)
+      res.status(500).json(err)
+    }
+  });
+
   module.exports = router;

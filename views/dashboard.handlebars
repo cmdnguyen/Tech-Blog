@@ -1,5 +1,17 @@
 <h1>Dashboard Page</h1>
 
+<h2>Post</h2>
+<div class="card border-secondary" style="max-width: 75rem;">
+  <div class="card-header">
+    <a href="/posts/{{post.id}}"><h3>{{post.title}}</h3></a>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{post.contents}}</p>
+    <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.createdAt}}</div>
+  </div>
+</div>
+
+<h2>Add Post</h2>
 <div id="post-form" style="max-width: 75rem;">
 <div class="mb-3" >
   <label for="post-title" class="form-label">Post Title</label>

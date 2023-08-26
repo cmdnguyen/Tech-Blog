@@ -5,24 +5,22 @@
   </div>
   <div class="card-body">
     <p class="card-text">{{post.contents}}</p>
-    <div class="footer text-body-secondary">Posted by {{post.user.id}} on {{post.date_created}}</div>
+    <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.createdAt}}</div>
   </div>
 </div>
 
-{{#each comment}}
-<p>{{comment}}</p>
-{{/each}}
-<h3>Comment</h3>
-<textarea></textarea>
-<button type="submit" id="comment-submit">Comment</button>
 
+<h3>Comment</h3>
+{{#each comments as |comment| }}
+<p>{{comment.comment}}{{comment.User.username}}</p>
+{{/each}}
 
 <div id="comment-form" style="max-width: 75rem;">
-  <label for="comment" class="form-label">Post Content</label>
-  <textarea class="form-control" id="comment" rows="3"></textarea>
-  <button type="submit" id="comment-submit">Post</button>
+  <label for="comment" class="form-label">Comment Content</label>
+<textarea class="form-control" id="comment" ></textarea>
+<button type="submit" id="comment-submit">Comment</button>
 </div>
-</div>
+
 
 {{#if canEdit}}
 <div id="post-form" style="max-width: 75rem;">
