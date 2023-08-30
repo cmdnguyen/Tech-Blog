@@ -30,3 +30,6 @@ const createNewPost = async (event) => {
 }
 
 document.getElementById("post-submit").addEventListener("click", createNewPost)
+
+
+

@@ -1,9 +1,21 @@
+main{
+    margin-left: 3%
+}
+
 .card{
-    margin-bottom: .5%;
-    margin-left: 1%
+    margin-bottom: 1%;
+    margin-left: 1%;
 }
 
 #post-form{
     margin-bottom: .5%;
-    margin-left: 1%
+    margin-left: 1%;
+    padding-bottom: .5%
 }
+
+#comment-form{
+    margin-bottom: .5%;
+    margin-left: 1%;
+    padding-bottom: .5%
+}
+

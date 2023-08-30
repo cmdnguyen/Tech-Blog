@@ -1,42 +1,56 @@
-{{log post}}
 <h2>Post</h2>
-<div class="card border-secondary" style="max-width: 75rem;">
+<div class="card border-secondary" style="max-width: 60rem;">
   <div class="card-header">
     <a href="/posts/{{post.id}}"><h3>{{post.title}}</h3></a>
   </div>
   <div class="card-body">
     <p class="card-text">{{post.contents}}</p>
     <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.createdAt}}</div>
+
+
+  {{#if canEdit}}
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end"> 
+  <button type="button" class="btn btn-danger" id="delete-button" data-post-id="{{post.id}}">Delete</button>
   </div>
-</div>
+  {{/if}}
+  </div>
+
+    </div>
+
 
 
 <h3>Comment</h3>
 {{#each comments as |comment| }}
-<p>{{comment.comment}}</p>
-<p>User: {{comment.user.username}}</p>
+<div class="card border-secondary" style="max-width: 60rem;">
+  <div class="card-body">
+    <p class="card-text">{{comment.comment}}</p>
+    <div class="footer text-body-secondary">- {{comment.user.username}} {{comment.createdAt}}</div>
+    </div>
+  </div>
 {{/each}}
 
-<div id="comment-form" style="max-width: 75rem;">
-  <label for="comment" class="form-label">Comment Content</label>
+<div id="comment-form" style="max-width: 60rem;">
+  <label for="comment" class="form-label"><strong>Your Comment</strong></label>
 <textarea class="form-control" id="comment" ></textarea>
 <button type="submit" id="comment-submit">Comment</button>
 </div>
 
 
 {{#if canEdit}}
-<div id="post-form" style="max-width: 75rem;">
+{{log post}}
+<div id="post-form" style="max-width: 60rem;">
 <div class="mb-3" >
-  <label for="post-title" class="form-label">Post Title</label>
-  <input type="email" class="form-control" id="post-title" value="{{post.title}}">
+  <label for="post-title" class="form-label"><strong>Post Title</strong></label>
+  <input type="email" class="form-control" id="update-title" value="{{post.title}}">
 </div>
 <div class="mb-3">
   <label for="post-contents" class="form-label">Post Content</label>
-  <textarea class="form-control" id="post-contents" rows="3" value="{{post.contents}}"></textarea>
-  <button type="submit" id="post-submit">Edit Post</button>
+  <textarea class="form-control" id="update-contents" rows="3" value="{{post.contents}}"></textarea>
+  <button type="submit" id="update-button" data-post-id="{{post.id}}">Update Post</button>
 </div>
 </div>
-{{/if}}
 
+<script src="/js/update-post.js"></script>
+{{/if}}
 <script src="/js/add-comment.js"></script>
-<script src="/js/add-post.js"></script>
+{{!-- <script src="/js/add-post.js"></script> --}}

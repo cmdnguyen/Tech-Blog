@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
+const dayjs = require('dayjs')
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 
@@ -11,6 +12,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create();
+
+// const date = dayjs()
+// const formattedDate = date.format('MM/DD/YYYY'); // Customize the format as needed
+
+// console.log(formattedDate);
+
+
 
 const sess = {
   secret: 'Super secret secret',

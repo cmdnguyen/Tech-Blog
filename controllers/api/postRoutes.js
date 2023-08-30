@@ -36,4 +36,20 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.put('/:id', async(req,res) =>{
+  try {
+    const postData = await Post.findByPk(req.params.id)
+
+    if(!postData){
+      return res.status(404).json({error: 'Post not found'})
+    }
+
+    const updatedPost = req.body
+    await postData.update(updatedPost)
+    res.status(200).json(postData)
+  } catch (error) {
+    res.status(500).json(err)
+  }
+})
+
 module.exports = router;
