@@ -1,7 +1,6 @@
-<h2>Post</h2>
 <div class="card border-secondary" style="max-width: 60rem;">
   <div class="card-header">
-    <a href="/posts/{{post.id}}"><h3>{{post.title}}</h3></a>
+    <a href="/posts/{{post.id}}"><h3 class="text-info">{{post.title}}</h3></a>
   </div>
   <div class="card-body">
     <p class="card-text">{{post.contents}}</p>
@@ -19,7 +18,7 @@
 
 
 
-<h3>Comment</h3>
+<h6>Comments</h6>
 {{#each comments as |comment| }}
 <div class="card border-secondary" style="max-width: 60rem;">
   <div class="card-body">
@@ -30,7 +29,7 @@
 {{/each}}
 
 <div id="comment-form" style="max-width: 60rem;">
-  <label for="comment" class="form-label"><strong>Your Comment</strong></label>
+  <label for="comment" class="form-label"><strong>Add Comment</strong></label>
 <textarea class="form-control" id="comment" ></textarea>
 <button type="submit" id="comment-submit">Comment</button>
 </div>
@@ -40,7 +39,7 @@
 {{log post}}
 <div id="post-form" style="max-width: 60rem;">
 <div class="mb-3" >
-  <label for="post-title" class="form-label"><strong>Post Title</strong></label>
+  <label for="post-title" class="form-label"><strong>Edit Post</strong></label>
   <input type="email" class="form-control" id="update-title" value="{{post.title}}">
 </div>
 <div class="mb-3">
