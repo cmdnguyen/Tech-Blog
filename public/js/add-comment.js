@@ -1,5 +1,4 @@
-const post_id = parseInt(window.location.pathname.split("/")[2])
-const createNewPost = async (event) => {
+const createNewComment = async (event) => {
     event.preventDefault()
 
 
@@ -27,5 +26,5 @@ const createNewPost = async (event) => {
     }
 }
 
-document.getElementById("comment-submit").addEventListener("click", createNewPost)
+document.getElementById("comment-submit").addEventListener("click", createNewComment)
 

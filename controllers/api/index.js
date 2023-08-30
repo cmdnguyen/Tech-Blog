@@ -1,4 +1,4 @@
-//localhost:3001/api
+// Import Express Router and api routes
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const postRoutes = require('./postRoutes');

@@ -1,19 +1,15 @@
+// Import Express Router & Comment model
 const router = require('express').Router()
-const {Comment, Post} = require ('../../models')
+const {Comment} = require ('../../models')
 
+// POST route for comment
 router.post('/', async (req, res) =>{
     try {
-      console.log("ADDING A COMMENT")
-      console.log("Body")
-       console.log(req.body)
-      
-
+      // Adds a new comment with the user's input and associate it with the user's id
        const newComment = await Comment.create({
         ...req.body,
         user_id: req.session.user_id,
        })
-       console.log("new comment")
-       console.log(newComment)
        res.status(200).json(newComment) 
     } catch (err) {
       console.log(err)
@@ -31,7 +27,7 @@ router.delete('/:id', async (req, res) => {
       });
   
       if (!commentData) {
-        res.status(404).json({ message: 'No blog post found with this id!' });
+        res.status(404).json({ message: 'No comment found with this id!' });
         return;
       }
   
@@ -41,14 +37,4 @@ router.delete('/:id', async (req, res) => {
     }
   });
   
-  router.get("/", async (req, res) => {
-    try {
-      const commentData = await Comment.findAll()
-      return res.json(commentData)
-    } catch (err) {
-      console.log(err)
-      res.status(500).json(err)
-    }
-  });
-
   module.exports = router;
