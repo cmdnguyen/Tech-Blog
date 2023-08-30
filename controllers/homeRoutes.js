@@ -1,4 +1,4 @@
-//localhost:3001/
+
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
@@ -9,11 +9,7 @@ router.get('/', async (req, res) => {
   //finds the posts in the database
   try {
     const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-        },
-      ],
+      include: [{model: User}],
     });
     //Gets the posts and renders it in the homepage
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -40,25 +36,28 @@ router.get('/login', async (req, res) => {
 
 // Dashboard page, requires users to be logged in
 router.get('/dashboard', withAuth, async (req, res) => {
-  
   // If not logged in, redirect to login page
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
   }
   try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{model: Post}]
+    })
+    const user = userData.get({plain: true})
+
+    //Gets the posts from the logged in user and renders it in the homepage
     const postData = await Post.findAll({
-      where:{user_id:req.session.id},
+      where:{user_id:req.session.user_id},
       include: [{model: User}],
     });
-    //Gets the posts and renders it in the homepage
+
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log("User ID:", req.session.id);
-    console.log("Posts:", posts);
   // If logged in, rendered Dashboard
   res.render('dashboard', {
     logged_in: req.session.logged_in,
-    posts,
+    posts, user
   });
 } catch (err) {
   console.log(err);
@@ -92,19 +91,32 @@ router.get('/posts/:id', withAuth, async (req, res) => {
   }
   //Finds the post by id from the User Model
   try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{model: Post}, {model:Comment}]
+    })
+    const user = userData.get({plain: true})
+    console.log("user data")
+    console.log(user)
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {model: User},
         {model: Comment}
       ],
     });
+
     const post = postData.get({plain:true})
     
+    const commentData = await Comment.findAll({
+      where: {post_id:req.params.id},
+      include: [{model:Post}, {model:User}]
+    })
+    const comments = commentData.map((comment) => comment.get({plain:true}))
+
     var canEdit;
     if (post.user_id === req.session.user_id) {
       canEdit = true;
     }
-    res.render('post', { post, canEdit, logged_in: req.session.logged_in, comments: post.Comment});
+    res.render('post', { post, canEdit, logged_in: req.session.logged_in, comments, user});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

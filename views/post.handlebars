@@ -12,10 +12,9 @@
 
 
 <h3>Comment</h3>
-{{#each post.comments as |comment| }}
-{{log comment}}
+{{#each comments as |comment| }}
 <p>{{comment.comment}}</p>
-<p>User: {{comment.userId}}</p>
+<p>User: {{comment.user.username}}</p>
 {{/each}}
 
 <div id="comment-form" style="max-width: 75rem;">

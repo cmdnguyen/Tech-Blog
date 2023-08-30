@@ -1,3 +1,4 @@
+const post_id = parseInt(window.location.pathname.split("/")[2])
 const createNewPost = async (event) => {
     event.preventDefault()
 
@@ -14,7 +15,7 @@ const createNewPost = async (event) => {
         headers: {
             'Content-Type' : 'application/json'
         },
-        body: JSON.stringify({comment}),
+        body: JSON.stringify({comment, post_id}),
     })
 
     console.log(response)
@@ -27,3 +28,4 @@ const createNewPost = async (event) => {
 }
 
 document.getElementById("comment-submit").addEventListener("click", createNewPost)
+
