@@ -1,57 +1,55 @@
-console.log('This is my login');
-
+// Log in function
 const handleLogin = async (event) => {
   event.preventDefault();
+  // Takes the value of the username and password in the login form
+  const username = document.querySelector("#login-username").value;
+  const password = document.querySelector("#login-password").value;
 
-  const username = document.querySelector('#login-username').value;
-  const password = document.querySelector('#login-password').value;
-
-  // Validate username and password (for example: email format and password length)
+  // Validate username and password
   if (!username || password.length < 8) {
-    alert('Invalid username or password');
+    alert("Invalid username or password");
     return;
   }
 
-  const response = await fetch('/api/users/login', {
-    method: 'POST',
+  // Sends the values to a POST route for api/users/login
+  const response = await fetch("/api/users/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ username, password }),
   });
-
-  console.log(response);
-
-if(response.ok){
-    location.replace("/dashboard")
-} else {
-  alert('Failed to log in');
-}
+  // Sends the logged in user to the dashboard if successful. If not, sends an alert
+  if (response.ok) {
+    location.replace("/dashboard");
+  } else {
+    alert("Failed to log in");
+  }
 };
 
-//get login-form id and on submit, handleLogin
-document.getElementById("login-form").addEventListener("submit", handleLogin)
+//Event listener for the login button in the login form
+document.getElementById("login-form").addEventListener("submit", handleLogin);
 
-
+// Sign Up function
 const handleSignUp = async (event) => {
   event.preventDefault();
-
-  const username = document.querySelector('#signup-username').value;
-  const password = document.querySelector('#signup-password').value;
-
+  // Takes the value of the username and password in the signup form
+  const username = document.querySelector("#signup-username").value;
+  const password = document.querySelector("#signup-password").value;
+  // If there's a username and password, sends values to POST route to api/users
   if (username && password) {
-    console.log("Got my username & password")
-    const response = await fetch('/api/users', {
-      method: 'POST',
+    const response = await fetch("/api/users", {
+      method: "POST",
       body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
-
+    // Sends the new user to dashboard since they are now logged in
     if (response.ok) {
-      location.replace("/dashboard")
+      location.replace("/dashboard");
     } else {
-      alert('Failed to sign up.');
+      alert("Failed to sign up.");
     }
   }
-}
-document.getElementById('signup-form').addEventListener('submit', handleSignUp)
+};
+// Event listener for the signup button in the signup form
+document.getElementById("signup-form").addEventListener("submit", handleSignUp);

@@ -1,15 +1,17 @@
+// Grabs the post id from the URL
 const post_id = parseInt(window.location.pathname.split("/")[2])
+
+// New comment function
 const createNewComment = async (event) => {
     event.preventDefault()
-
-
+    // Takes the value from the user input in the comment classs
     const comment = document.querySelector('#comment').value;
-    console.log(comment)
+    // Throws error if the comment field is empty
     if (!comment){
         alert('Must have comment');
         return;
     }
-    console.log("Before fetch")
+    // Sends the comment value and post id through the comment POST route
     const response = await fetch('/api/comments' , {
         method: 'POST',
         headers: {
@@ -17,15 +19,13 @@ const createNewComment = async (event) => {
         },
         body: JSON.stringify({comment, post_id}),
     })
-
-    console.log(response)
-
+    // Reloads the page if successful. If not, throw erro
     if (response.ok){
         document.location.reload()
     } else{
         console.log("Error")
     }
 }
-
+// Event listener for comment button
 document.getElementById("comment-submit").addEventListener("click", createNewComment)
 

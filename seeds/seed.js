@@ -18,7 +18,6 @@ const seedDatabase = async () => {
   for (const post of postData) {
   await Post.create({
       ...post,
-      // user_id: users[Math.floor(Math.random() * users.length)].id
     });
   }
   console.log('\n----- POSTS SEEDED -----\n')
@@ -26,8 +25,6 @@ const seedDatabase = async () => {
   for (const comment of commentData) {
     await Comment.create({
       ...comment,
-      // user_id: users[Math.floor(Math.random() * users.length)].id,
-      // post_id: post[Math.floor(Math.random() * post.length)].id,
     })
   }
   console.log('\n----- COMMENTS SEEDED -----\n')

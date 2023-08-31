@@ -21,6 +21,22 @@ N/A
 
 ## Usage
 
+This is what the homepage looks like:
+
+![HomePage](./assets/homepage.png)
+
+You should see a navigation bar and all of the posts in the database. When you go to a post or the dashboard without logging in, it will take you to the login page.
+
+Once you are logged in and signed up, it will allow you to access your dashboard and the post.
+
+Users can go on any posts and add a comment. If the logged in user is on a post they made, they can edit or delete the post.
+
+The session cookie for the logged in user lasts for two hours. Once it expires, the session cookie is destory.
+
+Here's a video demostration of the site:
+
+
+
 ## Credits
 
 AskBCS

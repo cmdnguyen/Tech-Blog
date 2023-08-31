@@ -36,17 +36,21 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// PUT route to update a post
 router.put('/:id', async(req,res) =>{
   try {
+    // Finds the post by id
     const postData = await Post.findByPk(req.params.id)
 
+    // If there's no post data, throw error
     if(!postData){
       return res.status(404).json({error: 'Post not found'})
-    }
-
+    // If there's postData, take the user input and update it
+    } else {
     const updatedPost = req.body
     await postData.update(updatedPost)
     res.status(200).json(postData)
+    }
   } catch (error) {
     res.status(500).json(err)
   }
