@@ -23,17 +23,15 @@ const handleLogin = async (event) => {
   console.log(response);
 
 if(response.ok){
-    document.location.replace("/dashboard")
+    location.replace("/dashboard")
 } else {
   alert('Failed to log in');
 }
-
-  const data = await response.json();
-  console.log(data);
 };
 
 //get login-form id and on submit, handleLogin
 document.getElementById("login-form").addEventListener("submit", handleLogin)
+
 
 const handleSignUp = async (event) => {
   event.preventDefault();
@@ -50,7 +48,7 @@ const handleSignUp = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      location.replace("/dashboard")
     } else {
       alert('Failed to sign up.');
     }

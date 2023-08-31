@@ -7,6 +7,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   //finds the posts in the database
   try {
+    console.log(req.session.user_id)
     const postData = await Post.findAll({
       include: [{model: User}],
     });
@@ -40,12 +41,19 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.redirect('/login');
     return;
   }
+
   // Finds the logged-in user in the database including the Post model
   try {
     const userData = await User.findByPk(req.session.user_id, {
-      include: [{model: Post}]
+      include: [{model: Post}],
+      where: {user_id:req.session.user_id}
     })
-    const user = userData.get({plain: true})
+
+    if (!userData) {
+      console.log("User not found");
+    } else {
+      const users = userData.get({plain: true})
+
 
     //Finds the posts from the logged in user
     const postData = await Post.findAll({
@@ -56,8 +64,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
   // If logged in, rendered Dashboard
   res.render('dashboard', {
     logged_in: req.session.logged_in,
-    posts, user
+    posts, users
   });
+}
 } catch (err) {
   console.log(err);
   res.status(500).json(err);

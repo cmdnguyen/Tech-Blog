@@ -7,12 +7,13 @@ router.post('/', async (req, res) => {
   try {
     // Takes user input to create a user
     const userData = await User.create({
-      username: req.body.username,
-      password: req.body.password
+      ...req.body
+      
     });
     // When the user is created, it will logged the user in
     req.session.save(() => {
       req.session.logged_in = true;
+      req.session.user_id = userData.id
       res.status(200).json(userData);
     });
   } catch (err) {
