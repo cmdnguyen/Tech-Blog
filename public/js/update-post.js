@@ -1,7 +1,7 @@
 const updatePost = async (id) => {
     // Takes the value of the edited title and contentd
-    const title = document.querySelector('#edit-title').value;
-    const contents = document.querySelector('#edit-contents').value;
+    const title = document.querySelector('#update-title').value;
+    const contents = document.querySelector('#update-contents').value;
     
     if (!title && !contents){
         alert('Must have title and content');
@@ -41,8 +41,11 @@ try {
     console.log(err)
 }
 }
-document.getElementById("edit-button").addEventListener("click", function(event){
+
+document.getElementById("update-button").addEventListener("click", function(event){
     const postId = event.target.dataset.postId
+    console.log("checking post id")
+    console.log(postId)
     if (postId){
         updatePost(postId)
     } else {
