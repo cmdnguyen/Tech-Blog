@@ -1,23 +1,33 @@
-  <h2>Login</h2>
-    <form id="login-form">
-        <label for="login-username">Username:</label>
-        <input type="username" id="login-username" name="login-username" required>
-        
-        <label for="login-password">Password:</label>
-        <input type="password" id="login-password" name="login-password" required>
-        
-        <button type="submit">Login</button>
-    </form>
-
-    <h1>SignUp</h1>
-    <form id="signup-form">
-        <label for="signup-username">Username:</label>
-        <input type="text" id="signup-username" name="signup-username" required>
-        
-        <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password" name="signup-password" required>
-        
-        <button type="submit">SignUp</button>
-    </form>
-
-<script src="/js/login.js"></script>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4">
+            <p class="display-4">Login</p>
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="login-username" class="form-label">Username</label>
+                    <input type="username" class="form-control" id="login-username" name="login-username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="login-password" name="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <p class="display-4">Sign Up</p>
+            <form id="signup-form">
+                <div class="mb-3">
+                    <label for="signup-username" class="form-label">Username</label>
+                    <input type="username" class="form-control" id="signup-username" name="signup-username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="signup-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signup-password" name="signup-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Signup</button>
+            </form>
+            <script src="/js/login.js"></script>
+        </div>
+    </div>
+</div>

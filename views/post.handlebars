@@ -1,4 +1,4 @@
-<div class="card border-secondary" style="max-width: 60rem;">
+<div class="card border-secondary">
   <div class="card-header">
     <a href="/posts/{{post.id}}"><h3 class="text-info">{{post.title}}</h3></a>
   </div>
@@ -20,7 +20,7 @@
 
 <h6>Comments</h6>
 {{#each comments as |comment| }}
-<div class="card border-secondary" style="max-width: 60rem;">
+<div class="card border-secondary">
   <div class="card-body">
     <p class="card-text">{{comment.comment}}</p>
     <div class="footer text-body-secondary">- {{comment.user.username}} {{comment.createdAt}}</div>
@@ -28,7 +28,7 @@
   </div>
 {{/each}}
 
-<div id="comment-form" style="max-width: 60rem;">
+<div id="comment-form">
   <label for="comment" class="form-label"><strong>Add Comment</strong></label>
 <textarea class="form-control" id="comment" ></textarea>
 <button type="submit" id="comment-submit">Comment</button>
@@ -37,7 +37,7 @@
 
 {{#if canEdit}}
 {{log post}}
-<div id="post-form" style="max-width: 60rem;">
+<div id="post-form">
 <div class="mb-3" >
   <label for="post-title" class="form-label"><strong>Edit Post</strong></label>
   <input type="email" class="form-control" id="update-title" value="{{post.title}}">

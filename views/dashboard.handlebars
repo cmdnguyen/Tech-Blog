@@ -1,28 +1,38 @@
 <h1 class="display-4">Your Dashboard</h1>
 
-{{#each posts as |post|}}
-<div class="card border-secondary" style="max-width: 75rem;">
-  <div class="card-header">
-    <a href="/posts/{{post.id}}"><h3 class="text-info">{{post.title}}</h3></a>
-  </div>
-  <div class="card-body">
-    <p class="card-text">{{post.contents}}</p>
-    <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.createdAt}}</div>
+<div class="container">
+  <div class="row justify-content-start">
+    {{#each posts as |post|}}
+    <div class="col-12 col-sm-6 col-md-3 mb-3">
+      <div class="card border-secondary">
+        <div class="card-header">
+          <a href="/posts/{{post.id}}">
+            <h3 class="text-info">{{post.title}}</h3>
+          </a>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{post.contents}}</p>
+          <div class="footer text-body-secondary">Posted by {{post.user.username}} on {{post.createdAt}}</div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
   </div>
 </div>
-{{/each}}
+
 
 <p class="display-6">Add Post</p>
-<div id="post-form" style="max-width: 75rem;">
-<div class="mb-3" >
-  <label for="post-title" class="form-label">Post Title</label>
-  <input type="title" class="form-control" id="post-title" required>
+<div id="post-form">
+  <div class="mb-3">
+    <label for="post-title" class="form-label">Post Title</label>
+    <input type="title" class="form-control" id="post-title" required>
+  </div>
+  <div class="mb-3">
+    <label for="post-contents" class="form-label">Post Content</label>
+    <textarea class="form-control" id="post-contents" rows="3"></textarea>
+    <button type="submit" id="post-submit">Post</button>
+  </div>
 </div>
-<div class="mb-3">
-  <label for="post-contents" class="form-label">Post Content</label>
-  <textarea class="form-control" id="post-contents" rows="3"></textarea>
-  <button type="submit" id="post-submit">Post</button>
-</div>
-</div>
+
 
 <script src="./js/add-post.js"></script>

@@ -1,3 +1,4 @@
+const post_id = parseInt(window.location.pathname.split("/")[2])
 const createNewComment = async (event) => {
     event.preventDefault()
 

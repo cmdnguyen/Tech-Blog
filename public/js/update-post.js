@@ -1,17 +1,14 @@
 const updatePost = async (id) => {
-
-    const title = document.querySelector('#update-title').value;
-    const contents = document.querySelector('#update-contents').value;
-
-
-    console.log(title)
-    console.log(contents)    
+    // Takes the value of the edited title and contentd
+    const title = document.querySelector('#edit-title').value;
+    const contents = document.querySelector('#edit-contents').value;
+    
     if (!title && !contents){
         alert('Must have title and content');
         return;
     }
 
-    console.log("Before fetch")
+
     const response = await fetch(`/api/posts/${id}` , {
         method: 'PUT',
         headers: {
@@ -20,10 +17,8 @@ const updatePost = async (id) => {
         body: JSON.stringify({title, contents}),
     })
 
-    console.log(response)
-
     if (response.ok){
-        window.location.href = "/dashboard"
+        location.reload()
     } else{
         console.log("Error ")
     }
@@ -31,7 +26,6 @@ const updatePost = async (id) => {
 
 const deletePost = async (id) => {
 try {
-        console.log("post id:" + id)
         const response = await fetch(`/api/posts/${id}`, {
             method: 'DELETE',
             headers: {
@@ -47,7 +41,7 @@ try {
     console.log(err)
 }
 }
-document.getElementById("update-button").addEventListener("click", function(event){
+document.getElementById("edit-button").addEventListener("click", function(event){
     const postId = event.target.dataset.postId
     if (postId){
         updatePost(postId)
@@ -58,10 +52,10 @@ document.getElementById("update-button").addEventListener("click", function(even
 document.getElementById("delete-button").addEventListener("click", function(event){
     // Get the post ID from the data attribute of the clicked button
     const postId = event.target.dataset.postId;
-
-    // Check if a post ID was found
-    if (postId) {
-        // Call deletePost with the post ID
+    // Asks the user to confirm
+    const confirmDelete = confirm("Are you sure you want to delete this post?") 
+    // If confirmed, delete the post assoociated with the id
+    if (confirmDelete) {
         deletePost(postId);
     } else {
         console.log("Post ID not found.");
