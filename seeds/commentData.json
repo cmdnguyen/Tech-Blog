@@ -1,18 +1,18 @@
 [
   {
-    "comment": "Let's go",
+    "comment": "I just started learning MVC this week. It's a lot to take in",
     "createdAt": "08/15/23",
     "user_id": 2,
     "post_id": 1
   },
   {
-    "comment": "Looking forward to it",
+    "comment": "That is so cool.",
     "createdAt": "08/15/23",
     "user_id": 1,
     "post_id": 3
   },
   {
-    "comment": "Sweet",
+    "comment": "Can't wait to touch on this in class.",
     "createdAt": "08/15/23",
     "user_id": 3,
     "post_id": 2

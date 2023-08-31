@@ -1,9 +1,12 @@
 # Tech Blog
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This is a tech blog created with Express and Sequelize. 
+This is a tech blog created with Express and Sequelize. This blog publishes users' posts and comments. Users can also see other posts and comments. Users can create their own account and use it to login. They can add, edit and delete posts. They can also add comments to other posts. 
+
+There were many challenges especially with the references in different models. I had a difficult time in obtaining IDs in a different model and putting it in view. I was able to get the ID referenced and have it shown in the posts and comments. This project involves all of the skills I have learned so far.
 
 ## Table of Contents 
 
@@ -17,14 +20,6 @@ This is a tech blog created with Express and Sequelize.
 N/A
 
 ## Usage
-
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
 ## Credits
 
