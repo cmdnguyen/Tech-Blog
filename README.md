@@ -35,7 +35,7 @@ The session cookie for the logged in user lasts for two hours. Once it expires, 
 
 Here's a video demostration of the site:
 
-
+[Tech-Blog Demo.webm](https://github.com/cmdnguyen/Tech-Blog/assets/131038401/a8e6bbca-9cd4-4482-8480-8b16361983b1)
 
 ## Credits
 
