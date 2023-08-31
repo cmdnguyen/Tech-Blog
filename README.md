@@ -8,6 +8,8 @@ This is a tech blog created with Express and Sequelize. This blog publishes user
 
 There were many challenges especially with the references in different models. I had a difficult time in obtaining IDs in a different model and putting it in view. I was able to get the ID referenced and have it shown in the posts and comments. This project involves all of the skills I have learned so far.
 
+Here's the link to the website: https://cmdnguyen-tech-blog-0555a22cc12a.herokuapp.com/
+
 ## Table of Contents 
 
 - [Installation](#installation)
